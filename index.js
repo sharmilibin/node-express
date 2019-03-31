@@ -11,26 +11,6 @@ app.use('/dishes',dishRouter);
 app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
-app.all('/dishes',(req,res,next) => {
-  res.statusCode = 200;
-  res.setHeader('content-type','text/plain');
-  next();
-});
-app.get('/dishes',(req,res,next) => {
-  res.end('get the dishes');
-});
-app.post('/dishes',(req,res,next) => {
-  res.end('dihes posted ',+req.body.name+ ' dishes are', +req.body.description);
-
-});
-app.put('/dishes',(req,res,next) => {
-  res.statusCode = 403;
-  res.end('put not supported');
-});
-app.delete('/dishes',(req,res,next) => {
-  res.end('deleting dishes');
-
-});
 app.get('/dishes/:dishId',(req,res,next) => {
   res.end('Get  the dishes ' +req.params.dishId );
 });
